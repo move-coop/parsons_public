@@ -101,7 +101,6 @@ class SmartMatch:
         self.connection = None
 
     def _smartmatch_poll(self, poll_url, submit_filename):
-        download_url = None
         while True:
             poll_response = requests.get(
                 poll_url,
@@ -310,6 +309,6 @@ class SmartMatch:
             .cutout(INTERNAL_JOIN_ID)
         )
         if INTERNAL_JOIN_ID_CONFLICT in input_table.fieldnames():
-            input_table = input_table.rename(INTERNAL_JOIN_ID_CONFLICT, INTERNAL_JOIN_ID)
+            input_table.rename(INTERNAL_JOIN_ID_CONFLICT, INTERNAL_JOIN_ID)
 
         return Table(outtable)
